@@ -19,26 +19,6 @@ make clean      # remove ./playground/
 `GOOS=js GOARCH=wasm`). For local preview without `mvm` installed, any static
 server works, e.g. `python3 -m http.server 8080`.
 
-## Layout
-
-```
-.
-├── CNAME              # mvm.sh custom domain
-├── .nojekyll          # disable Jekyll on GitHub Pages
-├── index.html         # landing page
-├── style.css
-├── favicon.ico
-└── playground/        # mirrored from ../mvm-playground/web/ — checked in
-```
-
-`playground/main.wasm` (~10 MB) is committed so GitHub Pages serves a
-self-contained tree with no build step on its end.
-
-## Deploy
-
-Push `main`. GitHub Pages picks up the change automatically (Settings → Pages
-→ "Deploy from a branch → main → /(root)").
-
 ## License
 
 BSD-3-Clause. See [LICENSE](LICENSE).
