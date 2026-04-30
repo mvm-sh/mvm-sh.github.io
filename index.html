@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>mvm - a fast virtual machine for Go</title>
+  <meta name="description" content="Mvm is a fast interpreter and virtual machine for Go and beyond. Run Go programs without a compiler, embed it, debug it.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/assets/mvm-logo-square-boxed.svg">
+  <link rel="apple-touch-icon" href="/assets/mvm-logo-square-boxed-512.png">
+  <meta property="og:title" content="mvm - a fast virtual machine for Go">
+  <meta property="og:description" content="Mvm is a fast interpreter and virtual machine for Go and beyond. Run Go programs without a compiler, embed it, debug it.">
+  <meta property="og:image" content="https://mvm.sh/assets/mvm-logo-512.png">
+  <meta property="og:url" content="https://mvm.sh/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site">
+    <a class="brand" href="/" aria-label="mvm home">
+      <img src="/assets/mvm-logo.svg" alt="mvm" height="28">
+    </a>
+    <nav>
+      <a href="/playground/">Playground</a>
+      <a href="https://github.com/mvm-sh/mvm/tree/main/docs">Docs</a>
+      <a href="https://github.com/mvm-sh/mvm">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>mvm - a fast virtual machine for Go and beyond.</h1>
+      <p class="lead">Run programs directly from source. Embed a full Go interpreter. Dynamically extend your apps. Batteries included.</p>
+      <div class="cta">
+        <a class="btn primary" href="/playground/">Try it in the browser →</a>
+        <a class="btn" href="https://github.com/mvm-sh/mvm">View on GitHub</a>
+      </div>
+      <pre class="install"><code>go install github.com/mvm-sh/mvm@latest</code></pre>
+    </section>
+
+    <section class="features">
+      <div class="card">
+        <h3>Fast bytecode VM</h3>
+        <p>Portable, stack-based virtual machine designed for low overhead.</p>
+      </div>
+      <div class="card">
+        <h3>Go-compatible</h3>
+        <p>Aims to be fully compatible with Go — the same source, no compiler.</p>
+      </div>
+      <div class="card">
+        <h3>Embeddable</h3>
+        <p>Drop into Go, C, or other host applications. See the examples.</p>
+      </div>
+      <div class="card">
+        <h3>REPL &amp; debugger</h3>
+        <p>Integrated interactive REPL, debugger, and test engine.</p>
+      </div>
+      <div class="card">
+        <h3>Batteries included</h3>
+        <p>One single static binary, with the full standard library bundled in.</p>
+      </div>
+    </section>
+
+    <section class="sample">
+      <h2>A quick taste</h2>
+      <pre><code>package main
+
+import "iter"
+
+func squares(n int) iter.Seq[int] {
+	return func(yield func(int) bool) {
+		for i := 1; i &lt;= n; i++ {
+			if !yield(i * i) {
+				return
+			}
+		}
+	}
+}
+
+func main() {
+	sum := 0
+	for v := range squares(4) {
+		sum += v
+	}
+	println(sum)
+}</code></pre>
+      <p class="caption"><a href="/playground/?sample=iter1">Open in playground →</a></p>
+    </section>
+
+    <section class="usage">
+      <h2>Run it</h2>
+      <dl class="commands">
+        <dt>go run .</dt>
+        <dd>Start the REPL</dd>
+        <dt>go run . _samples/fib.go</dt>
+        <dd>Run a Go source file</dd>
+        <dt>go run . run -e "fmt.Println(1+2)"</dt>
+        <dd>Evaluate an inline expression</dd>
+        <dt>go run . test ./pkg</dt>
+        <dd>Run <code>TestX</code> functions in a package</dd>
+        <dt>go run . help</dt>
+        <dd>List subcommands</dd>
+      </dl>
+    </section>
+
+    <section class="docs">
+      <h2>Learn more</h2>
+      <ul>
+        <li><a href="https://github.com/mvm-sh/mvm/blob/main/docs/index.md">Documentation</a> — entry point</li>
+        <li><a href="https://github.com/mvm-sh/mvm/blob/main/docs/architecture.md">Architecture</a> — pipeline, memory model, key design decisions</li>
+        <li><a href="https://github.com/mvm-sh/mvm/blob/main/CONTRIBUTING.md">Contributing</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site">
+    <span>mvm.sh — BSD-3-Clause</span>
+    <a href="https://github.com/mvm-sh/mvm">github.com/mvm-sh/mvm</a>
+  </footer>
+</body>
+</html>
