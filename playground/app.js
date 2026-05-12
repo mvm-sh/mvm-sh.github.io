@@ -193,7 +193,7 @@ function populateSamples() {
   const wanted = want && (names.includes(want) ? want
                        : names.includes(want + ".go") ? want + ".go"
                        : null);
-  const pick = wanted || (names.includes("fib.go") ? "fib.go" : names[0]);
+  const pick = wanted || (names.includes("uuid.go") ? "uuid.go" : names[0]);
   if (!pick) return;
   sampleSel.value = pick;
   loadSample(pick);
